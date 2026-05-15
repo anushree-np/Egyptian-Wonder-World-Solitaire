@@ -130,3 +130,5 @@ Possible future enhancements:
 Developed as a frontend game development project
 ---
 
+## Hosted website link 
+https://anushree-np.github.io/Egyptian-Wonder-World-Solitaire/
