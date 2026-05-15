@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════
    GAME.JS
-   The heart of the game. Contains:
+   The CORE of the game. Contains:
    - Constants (suits, ranks, scoring)
    - Game state object
    - Deck creation and shuffling

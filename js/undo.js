@@ -8,9 +8,6 @@
    undo(), or jump all the way back to move 1 with
    undoAll().
 
-   We use JSON.parse(JSON.stringify(...)) for deep
-   copies because card objects are plain data — no
-   functions or circular references.
    ═══════════════════════════════════════════════ */
 
 'use strict';

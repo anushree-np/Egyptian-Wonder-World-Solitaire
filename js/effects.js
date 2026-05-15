@@ -7,8 +7,6 @@
    2. Intro screen particles (run during intro)
    3. Win golden confetti (triggered on victory)
 
-   All kept lightweight — low particle counts,
-   simple math, no dependencies on game state.
    ═══════════════════════════════════════════════ */
 
 'use strict';
