@@ -1,0 +1,70 @@
+/* ═══════════════════════════════════════════════
+   BASE.CSS
+   CSS reset, custom properties (design tokens),
+   and foundational styles that everything else builds on.
+   ═══════════════════════════════════════════════ */
+
+/* ─── Design Tokens (CSS Variables) ─── */
+/* Change these to re-skin the entire game */
+:root {
+  /* Gold palette */
+  --gold:        #d4af37;
+  --gold-light:  #f0d060;
+  --gold-dim:    #8a7020;
+  --gold-glow:   rgba(212, 175, 55, 0.5);
+
+  /* Earth / sand tones */
+  --sand:        #c8a96e;
+  --sand-dark:   #6b4c1e;
+
+  /* Background shades — dark pyramid at night */
+  --bg-deep:     #0a0806;
+  --bg-mid:      #150f07;
+  --bg-surface:  #1e1508;
+
+  /* Card face colors */
+  --bg-card:     #f5e9cb;
+  --bg-card-alt: #e8d4a0;
+  --red:         #c0392b;   /* heart/diamond color */
+  --black:       #1a0a00;   /* spade/club color */
+
+  /* Shared decoration */
+  --border-gold: 1px solid var(--gold-dim);
+  --shadow-gold: 0 0 12px rgba(212,175,55,0.3);
+  --radius:      6px;
+
+  /* Card size — overridden by media queries for smaller screens */
+  --card-w: 88px;
+  --card-h: 124px;
+
+  /* Typography — serif fallbacks work offline if Google Fonts not cached */
+  --font-display: 'Cinzel Decorative', 'Palatino Linotype', Georgia, serif;
+  --font-ui:      'Cinzel', 'Palatino Linotype', Georgia, serif;
+  --font-body:    'Crimson Text', Georgia, serif;
+}
+
+/* ─── Box-sizing reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Root elements ─── */
+html, body {
+  height: 100%;
+  overflow: hidden;          /* No page scroll — game fits viewport */
+  background: var(--bg-deep);
+  color: var(--gold);
+  font-family: var(--font-ui);
+  user-select: none;         /* Prevent text selection while dragging */
+  -webkit-user-select: none;
+}
+
+/* ─── Scrollbar styling (webkit browsers) ─── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+/* ─── Utility classes ─── */
+.hidden { display: none !important; }

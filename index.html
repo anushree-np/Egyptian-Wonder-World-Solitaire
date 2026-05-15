@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pharaoh's Solitaire — Ancient Egyptian Klondike</title>
+
+  <!-- Modular CSS: load order matters (base first, then layers on top) -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       INTRO SCREEN — shown before game starts
+       Player clicks the big button to begin
+       ═══════════════════════════════════════════ -->
+  <div id="intro-screen">
+    <!-- Animated sand particles behind the intro -->
+    <canvas id="intro-particles-canvas"></canvas>
+
+    <div id="intro-content">
+      <!-- Decorative hieroglyph row -->
+      <div class="hieroglyph-deco">𓂀 𓆣 𓇋 𓏏 𓂀</div>
+
+      <!-- Animated ankh symbol -->
+      <div class="intro-ankh">☥</div>
+
+      <!-- Game title -->
+      <h1 class="intro-title">Pharaoh's Solitaire</h1>
+      <p class="intro-subtitle">Ancient Egyptian Klondike</p>
+
+      <!-- Thin gold divider line -->
+      <div class="intro-divider"></div>
+
+      <!-- The main "enter" button -->
+      <button id="btn-enter" class="btn-egypt btn-enter-world">
+        ☥ &nbsp; Enter the Egyptian Wonder World &nbsp; ☥
+      </button>
+
+      <p class="intro-hint">Keyboard: Space=draw · U=undo · Shift+U=undo all · N=new game · M=mute</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       GAME SCREEN — hidden until intro is dismissed
+       ═══════════════════════════════════════════ -->
+  <div id="game-screen" class="hidden">
+
+    <!-- Floating sand particles that drift in the background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ─── TOP BAR: logo / stats / buttons ─── -->
+    <header id="top-bar">
+
+      <!-- Logo -->
+      <div id="logo">
+        <span class="ankh">☥</span>
+        <h1>Pharaoh's Solitaire</h1>
+        <span class="ankh">☥</span>
+      </div>
+
+      <!-- Live stats: Moves · Time · Score -->
+      <div id="stats-bar">
+        <div class="stat-block">
+          <span class="stat-label">Moves</span>
+          <span class="stat-value" id="move-counter">0</span>
+        </div>
+        <div class="stat-block" id="timer-block">
+          <span class="stat-label">Time</span>
+          <span class="stat-value" id="timer-display">30:00</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-label">Score</span>
+          <span class="stat-value" id="score-display">0</span>
+        </div>
+      </div>
+
+      <!-- Action buttons (mute added here) -->
+      <div id="action-buttons">
+        <button class="btn-egypt btn-icon" id="btn-mute" title="Toggle sound (M)">🔊</button>
+        <button class="btn-egypt" id="btn-undo" title="Undo last move (U)">↩ Undo</button>
+        <button class="btn-egypt" id="btn-undo-all" title="Undo all moves (Shift+U)">↺ Reset</button>
+        <button class="btn-egypt" id="btn-new-game" title="New game (N)">⚡ New</button>
+      </div>
+
+    </header>
+
+    <!-- ─── MAIN GAME AREA ─── -->
+    <main id="game-area">
+
+      <!-- Top row: Stock + Waste on left, Foundations on right -->
+      <section id="top-zone">
+
+        <div id="stock-waste">
+          <div class="pile-wrapper">
+            <div class="pile-label">Stock</div>
+            <div class="card-pile" id="stock-pile" role="button"
+                 aria-label="Stock pile — click to draw" tabindex="0"></div>
+          </div>
+          <div class="pile-wrapper">
+            <div class="pile-label">Waste</div>
+            <div class="card-pile" id="waste-pile" aria-label="Waste pile"></div>
+          </div>
+        </div>
+
+        <!-- Four foundation piles, one per suit -->
+        <div id="foundation-zone">
+          <div class="pile-wrapper">
+            <div class="pile-label">♠</div>
+            <div class="card-pile foundation-pile" id="foundation-0"
+                 data-suit="♠" aria-label="Spades foundation"></div>
+          </div>
+          <div class="pile-wrapper">
+            <div class="pile-label">♥</div>
+            <div class="card-pile foundation-pile" id="foundation-1"
+                 data-suit="♥" aria-label="Hearts foundation"></div>
+          </div>
+          <div class="pile-wrapper">
+            <div class="pile-label">♦</div>
+            <div class="card-pile foundation-pile" id="foundation-2"
+                 data-suit="♦" aria-label="Diamonds foundation"></div>
+          </div>
+          <div class="pile-wrapper">
+            <div class="pile-label">♣</div>
+            <div class="card-pile foundation-pile" id="foundation-3"
+                 data-suit="♣" aria-label="Clubs foundation"></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Seven tableau columns -->
+      <section id="tableau-zone">
+        <div class="tableau-col" id="tableau-0" data-col="0"></div>
+        <div class="tableau-col" id="tableau-1" data-col="1"></div>
+        <div class="tableau-col" id="tableau-2" data-col="2"></div>
+        <div class="tableau-col" id="tableau-3" data-col="3"></div>
+        <div class="tableau-col" id="tableau-4" data-col="4"></div>
+        <div class="tableau-col" id="tableau-5" data-col="5"></div>
+        <div class="tableau-col" id="tableau-6" data-col="6"></div>
+      </section>
+
+    </main>
+
+    <!-- ─── WIN MODAL ─── -->
+    <div id="win-overlay" class="modal-overlay hidden"
+         role="dialog" aria-modal="true" aria-labelledby="win-title">
+      <div id="win-modal">
+        <div class="hieroglyph-row">𓂀 𓆣 𓇋 𓏏 𓂀</div>
+        <h2 id="win-title">𓁣 Pharaoh's Victory 𓁣</h2>
+        <p class="modal-subtitle">The ancient gods smile upon you!</p>
+        <div class="win-stats">
+          <div class="win-stat"><span>Moves</span><strong id="win-moves">0</strong></div>
+          <div class="win-stat"><span>Time</span><strong id="win-time">—</strong></div>
+          <div class="win-stat"><span>Score</span><strong id="win-score">0</strong></div>
+        </div>
+        <div class="scarab-row">🪲 🪲 🪲</div>
+        <button class="btn-egypt btn-large" id="btn-win-new">⚡ Play Again</button>
+      </div>
+    </div>
+
+    <!-- ─── GAME OVER MODAL (time ran out) ─── -->
+    <div id="gameover-overlay" class="modal-overlay hidden"
+         role="dialog" aria-modal="true" aria-labelledby="gameover-title">
+      <div id="gameover-modal">
+        <div class="hieroglyph-row">𓂸 𓅓 𓅱 𓂸</div>
+        <h2 id="gameover-title">The Sands Swallow You</h2>
+        <p class="modal-subtitle">The pharaoh's curse has spoken — time has run out!</p>
+        <button class="btn-egypt btn-large" id="btn-gameover-new">↩ Try Again</button>
+      </div>
+    </div>
+
+    <!-- ─── NO MORE MOVES MODAL (stuck detection) ─── -->
+    <div id="nomoves-overlay" class="modal-overlay hidden"
+         role="dialog" aria-modal="true" aria-labelledby="nomoves-title">
+      <div id="nomoves-modal">
+        <div class="hieroglyph-row">𓆑 𓏭 𓆑</div>
+        <h2 id="nomoves-title">Dead End in the Desert</h2>
+        <p class="modal-subtitle">No legal moves remain.<br>The sands have spoken.</p>
+        <div class="nomoves-actions">
+          <button class="btn-egypt btn-large" id="btn-nomoves-undo">↩ Undo Last Move</button>
+          <button class="btn-egypt btn-large" id="btn-nomoves-new">⚡ New Game</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /#game-screen -->
+
+  <!-- ═══════════════════════════════════════════
+       JavaScript modules — ORDER IS IMPORTANT:
+       Each file may call functions from earlier files.
+
+       1. audio.js   — sound helpers (no deps)
+       2. effects.js — particles (no deps at load time)
+       3. timer.js   — countdown (reads/writes state)
+       4. undo.js    — undo stack (reads/writes state)
+       5. drag.js    — drag & drop (reads state, calls game fns)
+       6. ui.js      — DOM refs, render, card builder
+       7. game.js    — state, logic, init (calls everything else)
+       ═══════════════════════════════════════════ -->
+  <script src="js/audio.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/undo.js"></script>
+  <script src="js/drag.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+
+</body>
+</html>

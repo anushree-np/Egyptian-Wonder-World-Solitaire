@@ -1,0 +1,132 @@
+/* ═══════════════════════════════════════════════
+   ANIMATIONS.CSS
+   All @keyframe definitions and animation classes.
+   Kept separate so they're easy to tune or disable.
+   ═══════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   INTRO SCREEN ANIMATIONS
+   ───────────────────────────────────────────── */
+
+/* Ankh symbol slowly pulses with a golden glow */
+.intro-ankh {
+  animation: ankh-bob 2.8s ease-in-out infinite;
+}
+@keyframes ankh-bob {
+  0%, 100% { transform: translateY(0) scale(1);    filter: drop-shadow(0 0 18px var(--gold-glow)); }
+  50%       { transform: translateY(-8px) scale(1.05); filter: drop-shadow(0 0 30px rgba(212,175,55,0.85)); }
+}
+
+/* Title text gently breathes */
+.intro-title {
+  animation: title-breathe 4s ease-in-out infinite;
+}
+@keyframes title-breathe {
+  0%, 100% { text-shadow: 0 0 30px var(--gold-glow), 0 0 60px rgba(212,175,55,0.15); }
+  50%       { text-shadow: 0 0 45px rgba(212,175,55,0.9), 0 0 90px rgba(212,175,55,0.35); }
+}
+
+/* Intro screen fades out when "Enter" is clicked */
+.intro-fadeout {
+  animation: fade-out 0.65s ease forwards;
+  pointer-events: none; /* Ignore clicks during fade */
+}
+@keyframes fade-out {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(1.03); }
+}
+
+/* ─────────────────────────────────────────────
+   HEADER ANIMATIONS
+   ───────────────────────────────────────────── */
+
+/* Ankh symbols in the header pulse slowly */
+.ankh {
+  font-size: 1.5rem;
+  color: var(--gold);
+  filter: drop-shadow(0 0 8px var(--gold-glow));
+  animation: ankh-pulse 3s ease-in-out infinite;
+}
+@keyframes ankh-pulse {
+  0%, 100% { filter: drop-shadow(0 0 6px var(--gold-glow)); opacity: 0.8; }
+  50%       { filter: drop-shadow(0 0 16px rgba(212,175,55,0.95)); opacity: 1; }
+}
+
+/* Timer warning — flickers red when under 60 seconds */
+#timer-block.warning .stat-value {
+  animation: timer-warn 1s ease-in-out infinite;
+}
+@keyframes timer-warn {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+
+/* ─────────────────────────────────────────────
+   CARD ANIMATIONS
+   ───────────────────────────────────────────── */
+
+/* Card flip: face-down → face-up */
+.card.flipping {
+  animation: card-flip 0.35s ease forwards;
+}
+@keyframes card-flip {
+  0%   { transform: rotateY(0deg) scaleX(1); }
+  50%  { transform: rotateY(90deg) scaleX(0.05); }
+  100% { transform: rotateY(0deg) scaleX(1); }
+}
+
+/* Card deal: slides in from above when a new game starts */
+.card.dealing {
+  animation: card-deal 0.25s ease-out both;
+}
+@keyframes card-deal {
+  from { opacity: 0.5; transform: translateY(-18px) scale(0.95); }
+  to   { opacity: 1;   transform: translateY(0)     scale(1); }
+}
+
+/* ─────────────────────────────────────────────
+   MODAL ANIMATIONS
+   ───────────────────────────────────────────── */
+
+/* Modals pop in with a scale + slide */
+#win-modal,
+#gameover-modal,
+#nomoves-modal {
+  animation: modal-appear 0.4s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+@keyframes modal-appear {
+  from { transform: scale(0.75) translateY(-20px); opacity: 0; }
+  to   { transform: scale(1)    translateY(0);     opacity: 1; }
+}
+
+/* Hieroglyph row glows on/off */
+.hieroglyph-row {
+  animation: glyph-glow 2.2s ease-in-out infinite;
+}
+@keyframes glyph-glow {
+  0%, 100% { color: var(--gold-dim); text-shadow: none; }
+  50%       { color: var(--gold); text-shadow: 0 0 12px var(--gold-glow); }
+}
+
+/* Scarab beetles bounce on the win screen */
+.scarab-row {
+  animation: scarab-bounce 1.6s ease-in-out infinite;
+}
+@keyframes scarab-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* ─────────────────────────────────────────────
+   MISCELLANEOUS
+   ───────────────────────────────────────────── */
+
+/* Quick golden flash when stock pile is clicked */
+@keyframes stock-flash {
+  0%   { box-shadow: 0 0 0 rgba(212,175,55,0); }
+  40%  { box-shadow: 0 0 20px rgba(212,175,55,0.7); }
+  100% { box-shadow: 0 0 0 rgba(212,175,55,0); }
+}
+.stock-clicked {
+  animation: stock-flash 0.35s ease;
+}
