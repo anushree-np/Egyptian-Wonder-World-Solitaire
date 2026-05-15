@@ -62,10 +62,10 @@ function _playTone(freq, duration, type = 'sine', volume = 0.15, startAt = 0) {
   osc.stop(ctx.currentTime  + startAt + duration + 0.05);
 }
 
-/* ─────────────────────────────────────────────
+/*  
    PUBLIC SOUND FUNCTIONS
    Each one describes exactly one game event.
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Soft card-shuffle sound when a card is placed.
@@ -126,9 +126,9 @@ function soundInvalid() {
   _playTone(160, 0.08, 'square', 0.07, 0);
 }
 
-/* ─────────────────────────────────────────────
+/*  
    MUTE CONTROL
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Toggle mute on/off.

@@ -1,13 +1,13 @@
-/* ═══════════════════════════════════════════════
+/*  
    LAYOUT.CSS
    Structural layout: header bar, game area,
    top zone (stock/foundations), tableau columns,
    and responsive breakpoints for smaller screens.
-   ═══════════════════════════════════════════════ */
+     */
 
-/* ─────────────────────────────────────────────
+/* 
    HEADER BAR
-   ───────────────────────────────────────────── */
+*/
 
 #top-bar {
   position: relative;
@@ -77,9 +77,9 @@
   align-items: center;
 }
 
-/* ─────────────────────────────────────────────
+/* 
    MAIN GAME AREA
-   ───────────────────────────────────────────── */
+*/
 
 #game-area {
   position: relative;
@@ -92,9 +92,9 @@
   overflow: hidden; /* No scrollbars in the game area */
 }
 
-/* ─────────────────────────────────────────────
+/*  
    TOP ZONE: Stock/Waste + Foundations
-   ───────────────────────────────────────────── */
+*/
 
 #top-zone {
   display: flex;
@@ -131,9 +131,9 @@
   text-transform: uppercase;
 }
 
-/* ─────────────────────────────────────────────
+/*  
    TABLEAU COLUMNS
-   ───────────────────────────────────────────── */
+*/
 
 #tableau-zone {
   display: flex;
@@ -165,9 +165,9 @@
   z-index: 1;
 }
 
-/* ─────────────────────────────────────────────
+/*  
    RESPONSIVE — Tablet (≤ 820px)
-   ───────────────────────────────────────────── */
+*/
 @media (max-width: 820px) {
   :root {
     --card-w: 68px;
@@ -183,9 +183,9 @@
   #stock-waste    { gap: 5px; }
 }
 
-/* ─────────────────────────────────────────────
+/*  
    RESPONSIVE — Mobile phone (≤ 600px)
-   ───────────────────────────────────────────── */
+*/
 @media (max-width: 600px) {
   :root {
     --card-w: 52px;
@@ -209,9 +209,9 @@
   #stats-bar        { gap: 10px; }
 }
 
-/* ─────────────────────────────────────────────
+/*  
    RESPONSIVE — Very small (≤ 400px)
-   ───────────────────────────────────────────── */
+*/
 @media (max-width: 400px) {
   :root {
     --card-w: 44px;

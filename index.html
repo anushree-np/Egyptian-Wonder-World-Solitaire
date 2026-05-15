@@ -13,10 +13,10 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════
+  <!--  
        INTRO SCREEN — shown before game starts
        Player clicks the big button to begin
-       ═══════════════════════════════════════════ -->
+         -->
   <div id="intro-screen">
     <!-- Animated sand particles behind the intro -->
     <canvas id="intro-particles-canvas"></canvas>
@@ -44,9 +44,9 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
+  <!--  
        GAME SCREEN — hidden until intro is dismissed
-       ═══════════════════════════════════════════ -->
+         -->
   <div id="game-screen" class="hidden">
 
     <!-- Floating sand particles that drift in the background -->
@@ -189,7 +189,7 @@
 
   </div><!-- /#game-screen -->
 
-  <!-- ═══════════════════════════════════════════
+  <!--  
        JavaScript modules — ORDER IS IMPORTANT:
        Each file may call functions from earlier files.
 
@@ -200,7 +200,7 @@
        5. drag.js    — drag & drop (reads state, calls game fns)
        6. ui.js      — DOM refs, render, card builder
        7. game.js    — state, logic, init (calls everything else)
-       ═══════════════════════════════════════════ -->
+         -->
   <script src="js/audio.js"></script>
   <script src="js/effects.js"></script>
   <script src="js/timer.js"></script>

@@ -16,9 +16,9 @@
 
 'use strict';
 
-/* ─────────────────────────────────────────────
+/*  
    CONSTANTS
-   ───────────────────────────────────────────── */
+     */
 
 var SUITS  = ['♠', '♥', '♦', '♣'];
 var RANKS  = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
@@ -37,11 +37,11 @@ var SCORE_TABLEAU_TO_FOUNDATION  =  15;
 var SCORE_FOUNDATION_TO_TABLEAU  = -15;
 var SCORE_FLIP_CARD              =   5;
 
-/* ─────────────────────────────────────────────
+/*  
    GAME STATE
    One central object holds all mutable data.
    Modules read and write `state` directly.
-   ───────────────────────────────────────────── */
+     */
 
 var state = {
   stock:       [],              // face-down draw pile
@@ -56,9 +56,9 @@ var state = {
   undoStack:   [],             // snapshots saved before each move
 };
 
-/* ─────────────────────────────────────────────
+/*  
    UTILITY HELPERS
-   ───────────────────────────────────────────── */
+     */
 
 /** Return 'red' or 'black' for a suit character. */
 function cardColor(suit) {
@@ -75,9 +75,9 @@ function addScore(delta) {
   state.score = Math.max(0, state.score + delta);
 }
 
-/* ─────────────────────────────────────────────
+/*  
    DECK CREATION
-   ───────────────────────────────────────────── */
+     */
 
 /** Create an unshuffled 52-card deck. */
 function createDeck() {
@@ -102,9 +102,9 @@ function shuffleDeck(deck) {
   return deck;
 }
 
-/* ─────────────────────────────────────────────
+/*  
    GAME INITIALISATION
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Start a brand-new game:
@@ -162,9 +162,9 @@ function initGame() {
   startTimer();   // from timer.js
 }
 
-/* ─────────────────────────────────────────────
+/*  
    MOVE VALIDATION
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Can `card` be placed on foundation pile `foundIdx`?
@@ -193,10 +193,10 @@ function canDropOnTableau(card, col) {
   return diffColour && rankValue(card.rank) === rankValue(top.rank) - 1;
 }
 
-/* ─────────────────────────────────────────────
+/*  
    MOVE EXECUTION
    Each function: validate → saveUndo → mutate state → render
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Click the stock pile:
@@ -306,9 +306,9 @@ function moveTableauToFoundation(fromCol, cardIdx) {
   return false;
 }
 
-/* ─────────────────────────────────────────────
+/*  
    WIN DETECTION
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Check if all 52 cards are in the foundations.
@@ -332,9 +332,9 @@ function checkWin() {
   startWinParticles();
 }
 
-/* ─────────────────────────────────────────────
+/*  
    GAME OVER (time expired)
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Trigger the game-over modal.
@@ -347,11 +347,11 @@ function triggerGameOver(reason) {
   DOM.gameoverOverlay.classList.remove('hidden');
 }
 
-/* ─────────────────────────────────────────────
+/*  
    NO-MORE-MOVES DETECTION
    Scans the full board for any legal move.
    Shows a helpful popup if none exist.
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Return true if at least one legal move exists anywhere.

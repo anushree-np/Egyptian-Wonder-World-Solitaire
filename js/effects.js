@@ -13,11 +13,11 @@
 
 'use strict';
 
-/* ─────────────────────────────────────────────
+/*  
    1. BACKGROUND SAND PARTICLES
    Tiny golden dust motes drifting slowly downward.
    Runs continuously behind the game board.
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Initialise the ambient sand particles on the game-screen canvas.
@@ -76,11 +76,11 @@ function initSandParticles() {
   loop();
 }
 
-/* ─────────────────────────────────────────────
+/*  
    2. INTRO SCREEN PARTICLES
    Larger, more dramatic gold motes for the splash screen.
    Uses a separate canvas (#intro-particles-canvas).
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Initialise particles on the intro screen canvas.
@@ -141,11 +141,11 @@ function initIntroParticles() {
   loop();
 }
 
-/* ─────────────────────────────────────────────
+/*  
    3. WIN GOLDEN CONFETTI
    Triggered when the player wins. Spawns
    coloured rectangles that fall and fade out.
-   ───────────────────────────────────────────── */
+     */
 
 var _winCanvas  = null;  // the canvas element
 var _winCtx     = null;  // its 2D context

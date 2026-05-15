@@ -1,12 +1,12 @@
-/* ═══════════════════════════════════════════════
+/*  
    ANIMATIONS.CSS
-   All @keyframe definitions and animation classes.
-   Kept separate so they're easy to tune or disable.
-   ═══════════════════════════════════════════════ */
+   All @keyframe definitions and animation classes.w
+     */
 
-/* ─────────────────────────────────────────────
+
+/*
    INTRO SCREEN ANIMATIONS
-   ───────────────────────────────────────────── */
+*/
 
 /* Ankh symbol slowly pulses with a golden glow */
 .intro-ankh {
@@ -36,9 +36,10 @@
   to   { opacity: 0; transform: scale(1.03); }
 }
 
-/* ─────────────────────────────────────────────
+
+/*
    HEADER ANIMATIONS
-   ───────────────────────────────────────────── */
+*/
 
 /* Ankh symbols in the header pulse slowly */
 .ankh {
@@ -61,9 +62,10 @@
   50%       { opacity: 0.45; }
 }
 
-/* ─────────────────────────────────────────────
+
+/*
    CARD ANIMATIONS
-   ───────────────────────────────────────────── */
+*/
 
 /* Card flip: face-down → face-up */
 .card.flipping {
@@ -84,9 +86,10 @@
   to   { opacity: 1;   transform: translateY(0)     scale(1); }
 }
 
-/* ─────────────────────────────────────────────
+
+/*
    MODAL ANIMATIONS
-   ───────────────────────────────────────────── */
+*/
 
 /* Modals pop in with a scale + slide */
 #win-modal,
@@ -116,10 +119,8 @@
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-5px); }
 }
+/* others */
 
-/* ─────────────────────────────────────────────
-   MISCELLANEOUS
-   ───────────────────────────────────────────── */
 
 /* Quick golden flash when stock pile is clicked */
 @keyframes stock-flash {

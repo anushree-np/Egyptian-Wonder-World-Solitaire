@@ -10,12 +10,12 @@
 
 'use strict';
 
-/* ─────────────────────────────────────────────
+/*  
    DOM REFERENCES
    Collect all the elements we touch at runtime.
    Centralised so we never scatter getElementById
    calls throughout the codebase.
-   ───────────────────────────────────────────── */
+     */
 var DOM = {
   // Screens
   introScreen:     document.getElementById('intro-screen'),
@@ -57,9 +57,9 @@ var DOM = {
   btnNomovesNew:   document.getElementById('btn-nomoves-new'),
 };
 
-/* ─────────────────────────────────────────────
+/*  
    INTRO SCREEN
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Trigger the fade-out animation on the intro screen,
@@ -84,9 +84,9 @@ function enterGame() {
   }, 650);
 }
 
-/* ─────────────────────────────────────────────
+/*  
    MUTE BUTTON
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Refresh the mute button icon to match the current audio state.
@@ -96,11 +96,11 @@ function updateMuteButton() {
   DOM.btnMute.title       = isMuted() ? 'Unmute (M)' : 'Mute sounds (M)';
 }
 
-/* ─────────────────────────────────────────────
+/*  
    RENDER ENGINE
    Syncs all DOM elements to the current game state.
    Called after every state change.
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Full re-render of the board.
@@ -187,11 +187,11 @@ function renderTableau() {
   });
 }
 
-/* ─────────────────────────────────────────────
+/*  
    CARD ELEMENT BUILDER
    Creates one card <div> with correct content
    and drag event listeners.
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Build and return a card DOM element.
@@ -238,10 +238,10 @@ function buildCardEl(card, source, sourceIndex, zIndex) {
   return el;
 }
 
-/* ─────────────────────────────────────────────
+/*  
    EVENT WIRING
    All button click handlers live here.
-   ───────────────────────────────────────────── */
+     */
 
 // ── Intro "Enter" button ──
 DOM.btnEnter.addEventListener('click', enterGame);

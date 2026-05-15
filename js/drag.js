@@ -30,9 +30,9 @@ var drag = {
   sourceCardEl: null,   // the original DOM element (we dim it during drag)
 };
 
-/* ─────────────────────────────────────────────
+/*  
    MOUSE EVENT HANDLERS
-   ───────────────────────────────────────────── */
+     */
 
 function onCardMouseDown(e) {
   if (e.button !== 0) return;  // left button only
@@ -50,9 +50,9 @@ function onMouseUp(e) {
   endDrag(e.clientX, e.clientY);
 }
 
-/* ─────────────────────────────────────────────
+/*  
    TOUCH EVENT HANDLERS
-   ───────────────────────────────────────────── */
+     */
 
 function onCardTouchStart(e) {
   e.preventDefault();  // prevents scroll while dragging cards
@@ -73,9 +73,9 @@ function onTouchEnd(e) {
   endDrag(t.clientX, t.clientY);
 }
 
-/* ─────────────────────────────────────────────
+/*  
    START DRAG
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Begin a drag operation.
@@ -200,9 +200,9 @@ function buildGhost(cards, width) {
   return ghost;
 }
 
-/* ─────────────────────────────────────────────
+/*  
    MOVE DRAG (track cursor)
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Move the ghost element to follow the cursor.
@@ -221,9 +221,9 @@ function moveDrag(clientX, clientY) {
   if (target) target.classList.add('drop-target');
 }
 
-/* ─────────────────────────────────────────────
+/*  
    END DRAG (release)
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Attempt to place the dragged card(s) at the release position.
@@ -271,9 +271,9 @@ function endDrag(clientX, clientY) {
   if (!moved) render();
 }
 
-/* ─────────────────────────────────────────────
+/*  
    DROP HANDLERS
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Try to drop dragged card(s) onto a foundation pile.
@@ -343,9 +343,9 @@ function handleDropOnTableau(col) {
   return true;
 }
 
-/* ─────────────────────────────────────────────
+/*  
    DROP TARGET DETECTION
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Find which pile element is at the cursor position.
@@ -394,11 +394,11 @@ function clearDropTargets() {
   });
 }
 
-/* ─────────────────────────────────────────────
+/*  
    GLOBAL DRAG LISTENERS
    Attached to document so events are captured
    even if the cursor moves off the card.
-   ───────────────────────────────────────────── */
+     */
 document.addEventListener('mousemove', onMouseMove);
 document.addEventListener('mouseup',   onMouseUp);
 document.addEventListener('touchmove', onTouchMove, { passive: false });

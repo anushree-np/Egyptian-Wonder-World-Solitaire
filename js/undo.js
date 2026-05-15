@@ -15,9 +15,9 @@
 
 'use strict';
 
-/* ─────────────────────────────────────────────
+/*  
    SAVE SNAPSHOT
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Push a snapshot of the current game state onto the stack.
@@ -38,9 +38,9 @@ function saveUndo() {
   updateUndoButtons();
 }
 
-/* ─────────────────────────────────────────────
+/*  
    UNDO LAST MOVE
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Revert the game to the state before the last move.
@@ -58,9 +58,9 @@ function undo() {
   updateUndoButtons();
 }
 
-/* ─────────────────────────────────────────────
+/*  
    UNDO ALL MOVES
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Jump all the way back to how the board looked after the deal.
@@ -80,9 +80,9 @@ function undoAll() {
   updateUndoButtons();
 }
 
-/* ─────────────────────────────────────────────
+/*  
    APPLY SNAPSHOT
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Overwrite the live game state with a saved snapshot.
@@ -106,9 +106,9 @@ function applySnapshot(snap) {
   }
 }
 
-/* ─────────────────────────────────────────────
+/*  
    BUTTON STATE
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Enable or disable the Undo / Undo-All buttons

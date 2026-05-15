@@ -16,9 +16,9 @@
 // Internal interval handle — we need to keep this to cancel it later
 var _timerInterval = null;
 
-/* ─────────────────────────────────────────────
+/*  
    TIMER CONTROL
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Start the countdown.
@@ -78,9 +78,9 @@ function resetTimer() {
   updateTimerDisplay();
 }
 
-/* ─────────────────────────────────────────────
+/*  
    DISPLAY HELPERS
-   ───────────────────────────────────────────── */
+     */
 
 /**
  * Format a number of seconds as "MM:SS".
